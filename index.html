@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+h1 {
+    color: yellow;
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.container {
+    position: relative;
+    width: min(40em, 90vw);
+    height: min(40em, 90vw);
+    font-size: min(10px, 2.5vw);
+    margin: 1rem auto;
+}
+
+.sun {
+    position: absolute;
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 3em white;
+}
+
+.earth, .moon {
+    position: absolute;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
+}
+
+.earth {
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+    animation: orbit 36.5s linear infinite;
+}
+
+.moon {
+    top: 0;
+    right: 0;
+    width: 8em;
+    height: 8em;
+    animation: orbit 2.7s linear infinite;
+}
+
+.earth::before,
+.moon::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.earth::before {
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    background-color: aqua;
+}
+
+.moon::before {
+    top: 0.8em;
+    right: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: silver;
+}
+
+.info-container {
+    width: min(600px, 95%);
+    margin: 1rem auto;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.info-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    margin: 1rem 0;
+}
+
+.info-box h2 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.info-box p {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+.credit {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: bold;
+    animation: rainbow 4s linear infinite;
+    text-shadow: 0 0 10px currentColor,
+                 0 0 20px currentColor,
+                 0 0 30px currentColor;
+    z-index: 100;
+}
+
+@keyframes orbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rainbow {
+    0% { color: red; text-shadow: 0 0 10px red; }
+    17% { color: orange; text-shadow: 0 0 10px orange; }
+    33% { color: yellow; text-shadow: 0 0 10px yellow; }
+    50% { color: green; text-shadow: 0 0 10px green; }
+    67% { color: blue; text-shadow: 0 0 10px blue; }
+    83% { color: indigo; text-shadow: 0 0 10px indigo; }
+    100% { color: violet; text-shadow: 0 0 10px violet; }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .info-box {
+        padding: 1rem;
+    }
+    
+    .credit {
+        bottom: 0.5rem;
+        right: 0.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Our Solar System: Earth-Moon Dance</h1>
+    
+    <div class="container">
+        <div class="sun"></div>
+        <div class="earth">
+            <div class="moon"></div>
+        </div>
+    </div>
+
+    <div class="credit">Coded by Fresh Teacher</div>
+</body>
+</html>
